@@ -11,7 +11,7 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_styles', 10, 3);
 function set_user_meta($profile) {
     $profile['first_name_en'] = '名(英字)';
     $profile['last_name_en'] = '姓(英字)';
-    $profile['grade'] = '学年';
+    $profile['grade'] = '配属年';
     $profile['favorite'] = '好きなもの';
     $profile['research_area'] = '研究テーマ';
     $profile['qiita'] = 'Qiita ID';
