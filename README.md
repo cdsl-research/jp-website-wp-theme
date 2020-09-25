@@ -9,4 +9,4 @@ docker-compose up -d
 Create theme
 
 ```
-zip -r cdsl.zip *.php
+zip -r cdsl.zip ./cdsl
