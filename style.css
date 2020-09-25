@@ -1,0 +1,15 @@
+/*
+ Theme Name:   CDSL
+ Theme URI:    https://ja.tak-cslab.org/
+ Description:  CDSL Website theme
+ Author:       Tomoyuki KOYAMA
+ Author URI:   https://koyama.me/
+ Template:     scaffold
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+.wp-block-image figcaption {
+    text-align: center;
+}
