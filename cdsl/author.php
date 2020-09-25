@@ -16,10 +16,6 @@
                 <?php echo $curauth->last_name.' '.$curauth->first_name; ?>
             </div>
             <div class="item">
-                <span>学年</span>
-                <?php echo $curauth->grade; ?>
-            </div>
-            <div class="item">
                 <span>好きなもの</span>
                 <?php echo $curauth->favorite; ?>
             </div>

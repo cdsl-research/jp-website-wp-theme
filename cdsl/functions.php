@@ -22,16 +22,27 @@ function set_user_meta($profile) {
 add_filter('user_contactmethods', 'set_user_meta');
 
 
-// Add shortcode [author_list]
-function get_member_list() {
-    $users = get_users(['orderby'=>ID,'order'=>ASC]);
+// Add shortcode [member_list]
+function get_member_list( $atts ) {
+    $atts = shortcode_atts( array(
+        'grade' => '',
+    ), $atts, 'member_list');
+    $all_users = get_users( array(
+        'orderby' => ID,
+        'order' => ASC
+    ));
+    $users = array_filter($all_users, function($var) use ($atts) {
+        return $var->grade === $atts['grade'];
+    });
+
     $body = '<ul>';
     foreach($users as $user):
-	if(empty($user->last_name) || empty($user->first_name)) continue;
-	$username = sprintf('%s %s', $user->last_name, $user->first_name);
+	    if(empty($user->grade)) continue;
+	    $username = sprintf('%s %s', $user->last_name, $user->first_name);
         $body .= sprintf('<li><a href="%s">%s</a></li>', get_author_posts_url($user->ID), $username);
     endforeach;
     $body .= '</ul>';
+
     return $body;
 }
 add_shortcode('member_list', 'get_member_list');
@@ -41,7 +52,7 @@ add_shortcode('member_list', 'get_member_list');
 function add_column_headers( $column_headers ) {
     $column_headers['last_name_en'] = '姓(英)';
     $column_headers['first_name_en'] = '名(英)';
-    $column_headers['grade'] = '学年';
+    $column_headers['grade'] = '配属年';
     $column_headers['qiita'] = 'Qiita';
     $column_headers['github'] = 'GitHub';
     return $column_headers;
