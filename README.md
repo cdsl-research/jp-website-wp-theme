@@ -1,12 +1,14 @@
 # jp-website-wp-theme
 
-Development Environment
+## Development Environment
 
 ```
 docker-compose up -d
 ```
 
-Create theme
+## Create theme
+
+fix theme version on cdsl/style.css
 
 ```
 zip -r cdsl.zip ./cdsl
