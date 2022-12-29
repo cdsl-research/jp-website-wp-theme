@@ -3,17 +3,26 @@
 <div class="content-area">
 <article class="post-24 page type-page status-publish hentry">
 
-    <?php $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author)); ?>
+    <?php 
+		$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author)); 
+		$en_name = $curauth->first_name_en.' '.$curauth->last_name_en;
+		$ja_name = $curauth->last_name.' '.$curauth->first_name;
+		if (strlen($en_name) == 1){
+			$header_name = $ja_name;
+		}else{
+			$header_name = $en_name;
+		}
+    ?>
 
     <header class="entry-header">
-        <h1 class="entry-title"><?php echo $curauth->first_name_en.' '.$curauth->last_name_en; ?></h1>
+        <h1 class="entry-title"><?php echo $header_name; ?></h1>
     </header>
 
     <div class="entry-content">
         <section class="profile">
             <div class="item">
                 <span>名前</span>
-                <?php echo $curauth->last_name.' '.$curauth->first_name; ?>
+                <?php echo $ja_name; ?>
             </div>
             <div class="item">
                 <span>好きなもの</span>
