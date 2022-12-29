@@ -28,8 +28,8 @@ function get_member_list( $atts ) {
         'grade' => '',
     ), $atts, 'member_list');
     $all_users = get_users( array(
-        'orderby' => ID,
-        'order' => ASC
+        'orderby' => 'ID',
+        'order' => 'ASC'
     ));
     $users = array_filter($all_users, function($var) use ($atts) {
         return $var->grade === $atts['grade'];
